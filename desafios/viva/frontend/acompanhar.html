@@ -1,35 +1,293 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acompanhar — VIVA</title>
-    <link rel="stylesheet" href="css/base.css">
-      <script src="js/saida-rapida.js" defer></script>
-</head>
-<body>
-  <header>
-    <h1>VIVA — Cidade que Protege</h1>
-    <p><strong>Em emergência:</strong> 190 (Polícia) · 180 (Central de Atendimento à Mulher)</p>
-    <nav aria-label="Menu principal">
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="servicos.html">Serviços de apoio</a></li>
-        <li><a href="orientacoes.html">Orientações</a></li>
-        <li><a href="menores.html">Meninas e adolescentes</a></li>
-        <li><a href="registrar.html">Registrar um problema</a></li>
-        <li><a href="acompanhar.html" aria-current="page">Acompanhar</a></li>
-      </ul>
-    </nav>
-  </header>
+  <title>Acompanhar registro — VIVA</title>
 
-  <main>
-    <h2>Acompanhar solicitação</h2>
-    <p>Em construção: consulta do andamento por código de protocolo.</p>
+  <link rel="stylesheet" href="css/viva.css">
+  <link rel="stylesheet" href="css/acompanhar.css">
+
+  <script src="js/layout.js" defer></script>
+  <script src="js/acompanhar.js" defer></script>
+</head>
+
+<body>
+
+  <a class="pular-conteudo" href="#conteudo">
+    Pular para o conteúdo
+  </a>
+
+  <header id="topo"></header>
+
+  <noscript>
+    <p class="aviso-noscript">
+      Ative o JavaScript para consultar seu registro.
+      Em emergência, ligue 190.
+    </p>
+  </noscript>
+
+  <main id="conteudo" class="acompanhar">
+
+    <!-- Apresentação da página -->
+    <section class="acompanhar-hero" aria-labelledby="acompanhar-titulo">
+
+      <div class="container acompanhar-hero__grade">
+
+        <div class="acompanhar-hero__texto">
+          <h1 id="acompanhar-titulo">
+            Acompanhe seu registro
+          </h1>
+
+          <p>
+            Consulte o andamento do problema urbano registrado
+            e acompanhe a situação do seu protocolo.
+          </p>
+        </div>
+
+        <div class="acompanhar-hero__arte" aria-hidden="true"></div>
+
+      </div>
+
+    </section>
+
+    <div class="container acompanhar-conteudo">
+
+      <!-- Consulta do protocolo -->
+      <section class="consulta" aria-labelledby="consulta-titulo">
+
+        <form id="form-consulta" class="consulta__form">
+
+          <h2 id="consulta-titulo">
+            <label for="protocolo">
+              Consultar por número de protocolo
+            </label>
+          </h2>
+
+          <div class="consulta__campos">
+
+            <div class="consulta__entrada">
+
+              <svg class="icone" viewBox="0 0 24 24"
+                aria-hidden="true">
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="m16 16 5 5"></path>
+              </svg>
+
+              <input
+                type="text"
+                id="protocolo"
+                name="protocolo"
+                placeholder="Ex.: VIVA-2026-ABCD-2345"
+                maxlength="19"
+                autocomplete="off"
+                autocapitalize="characters"
+                spellcheck="false"
+                aria-describedby="protocolo-ajuda consulta-mensagem"
+                required
+              >
+
+            </div>
+
+            <button
+              type="submit"
+              id="btn-consultar"
+              class="botao botao--primario">
+              Consultar
+            </button>
+
+          </div>
+
+          <p id="consulta-mensagem"
+            class="consulta__mensagem"
+            role="status"
+            aria-live="polite"></p>
+
+        </form>
+
+        <aside class="consulta__ajuda">
+
+          <svg class="icone" viewBox="0 0 24 24"
+            aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 11v6M12 7h.01"></path>
+          </svg>
+
+          <div>
+            <h3>Onde encontro meu protocolo?</h3>
+
+            <p id="protocolo-ajuda">
+              O número é gerado após o envio do registro.
+              Guarde esse código para futuras consultas.
+            </p>
+          </div>
+
+        </aside>
+
+      </section>
+
+      <!-- Resultado da consulta -->
+      <section
+        id="resultado-registro"
+        class="resultado"
+        aria-labelledby="resultado-titulo"
+        hidden>
+
+        <div class="resultado__cabecalho">
+
+          <div class="resultado__protocolo">
+
+            <span class="resultado__icone" aria-hidden="true">
+              <svg class="icone" viewBox="0 0 24 24">
+                <rect x="5" y="4" width="14" height="18" rx="2"></rect>
+                <path d="M9 4V2h6v2M9 10h6M9 14h6"></path>
+              </svg>
+            </span>
+
+            <div>
+              <span>Protocolo</span>
+              <h2 id="resultado-titulo" tabindex="-1"></h2>
+            </div>
+
+          </div>
+
+          <span id="resultado-status" class="resultado__status"></span>
+
+          <p class="resultado__data">
+            Registrado em:
+            <time id="resultado-data"></time>
+          </p>
+
+          <span
+            id="resultado-demo"
+            class="resultado__demo"
+            hidden>
+            Dados demonstrativos
+          </span>
+
+        </div>
+
+        <div class="resultado__grade">
+
+          <!-- Informações do problema -->
+          <div class="resultado__detalhes">
+
+            <dl>
+
+              <div class="detalhe">
+                <dt>Problema registrado</dt>
+                <dd id="resultado-categoria"
+                  class="detalhe__categoria"></dd>
+              </div>
+
+              <div class="detalhe">
+                <dt>Localização aproximada</dt>
+                <dd id="resultado-bairro"></dd>
+              </div>
+
+              <div class="detalhe">
+                <dt>Descrição</dt>
+                <dd id="resultado-descricao"></dd>
+              </div>
+
+            </dl>
+
+          </div>
+
+          <!-- Linha de andamento -->
+          <div class="andamento">
+
+            <h3>Andamento do registro</h3>
+
+            <ol class="andamento__etapas">
+
+              <li class="andamento__etapa" data-status="recebido">
+                <span class="andamento__circulo" aria-hidden="true">
+                  <svg class="icone" viewBox="0 0 24 24">
+                    <path d="m5 12 4 4L19 6"></path>
+                  </svg>
+                </span>
+                <strong>Recebido</strong>
+                <p>Registro armazenado na plataforma.</p>
+              </li>
+
+              <li class="andamento__etapa" data-status="em_analise">
+                <span class="andamento__circulo" aria-hidden="true">
+                  <svg class="icone" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7v5l3 2"></path>
+                  </svg>
+                </span>
+                <strong>Em análise</strong>
+                <p>Etapa prevista para avaliação.</p>
+              </li>
+
+              <li class="andamento__etapa" data-status="encaminhado">
+                <span class="andamento__circulo" aria-hidden="true">
+                  <svg class="icone" viewBox="0 0 24 24">
+                    <path d="M3 12h17M14 6l6 6-6 6"></path>
+                  </svg>
+                </span>
+                <strong>Encaminhado</strong>
+                <p>Etapa prevista para encaminhamento.</p>
+              </li>
+
+              <li class="andamento__etapa" data-status="concluido">
+                <span class="andamento__circulo" aria-hidden="true">
+                  <svg class="icone" viewBox="0 0 24 24">
+                    <path d="m5 12 4 4L19 6"></path>
+                  </svg>
+                </span>
+                <strong>Concluído</strong>
+                <p>Etapa final do acompanhamento.</p>
+              </li>
+
+            </ol>
+
+            <p class="andamento__nota">
+              As etapas representam o fluxo previsto no projeto.
+              Não há encaminhamento real aos órgãos públicos.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Privacidade -->
+      <section class="acompanhar-privacidade">
+
+        <svg class="icone" viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"></path>
+          <path d="m9 12 2 2 4-4"></path>
+        </svg>
+
+        <div>
+          <h2>Privacidade e segurança</h2>
+
+          <p>
+            Guarde seu protocolo em segurança e evite compartilhá-lo.
+            O VIVA não solicita identificação pessoal para registrar
+            problemas urbanos.
+          </p>
+        </div>
+
+      </section>
+
+      <p class="acompanhar-nota">
+        <strong>Projeto acadêmico:</strong>
+        o VIVA não é um serviço oficial da Prefeitura do Recife
+        e não realiza encaminhamentos aos órgãos públicos.
+      </p>
+
+    </div>
+
   </main>
 
-  <footer>
-    <p>Projeto acadêmico — UNINASSAU Olinda, 2026.2.</p>
-  </footer>
+  <footer id="rodape"></footer>
+
 </body>
 </html>
