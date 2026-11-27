@@ -2,6 +2,7 @@
 const path = require("node:path");
 const express = require("express");
 const rotasRegistros = require("./routes/registros");
+const rotasServicos = require("./routes/servicos");
 
 const app = express();
 const PORTA = process.env.PORT || 3000;
@@ -21,6 +22,7 @@ app.get("/api/saude", (req, res) => {
 });
 
 app.use("/api/registros", rotasRegistros);
+app.use("/api/servicos", rotasServicos);
 
 app.use(express.static(PASTA_FRONTEND));
 

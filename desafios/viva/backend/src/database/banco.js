@@ -14,5 +14,12 @@ const banco = new Banco(CAMINHO);
 
 // Cria as tabelas se ainda não existirem
 banco.exec(fs.readFileSync(path.join(__dirname, "schema.sql"), "utf8"));
+// Insere os dados iniciais dos serviços de apoio
+banco.exec(
+  fs.readFileSync(
+    path.join(__dirname, "seed-servicos.sql"),
+    "utf8"
+  )
+);
 
 module.exports = banco;
