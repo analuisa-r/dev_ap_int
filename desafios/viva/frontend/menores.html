@@ -3,49 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Informação e canais oficiais de ajuda para meninas e adolescentes: Disque 100, Conselho Tutelar e Polícia.">
+
   <title>Meninas e adolescentes — VIVA</title>
-    <link rel="stylesheet" href="css/base.css">
-      <script src="js/saida-rapida.js" defer></script>
+
+  <link rel="stylesheet" href="css/viva.css">
+  <link rel="stylesheet" href="css/menores.css">
+
+  <script src="js/layout.js" defer></script>
 </head>
+
 <body>
-  <header>
-    <h1>VIVA — Cidade que Protege</h1>
-    <p><strong>Em emergência:</strong> 190 (Polícia) · 180 (Central de Atendimento à Mulher)</p>
-    <nav aria-label="Menu principal">
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="servicos.html">Serviços de apoio</a></li>
-        <li><a href="orientacoes.html">Orientações</a></li>
-        <li><a href="menores.html" aria-current="page">Meninas e adolescentes</a></li>
-        <li><a href="registrar.html">Registrar um problema</a></li>
-        <li><a href="acompanhar.html">Acompanhar</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-   <h2>Meninas e adolescentes</h2>
-  <p>Esta página é para meninas e adolescentes. Aqui você encontra informação e caminhos de apoio. O VIVA informa e indica canais oficiais.</p>
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
 
-  <h3>Você não tem culpa</h3>
-  <p>Se alguém está te machucando, te ameaçando ou te fazendo mal, a culpa não é sua. Você pode pedir ajuda a um adulto de confiança, como alguém da família, da escola ou da sua comunidade.</p>
+  <noscript>
+    <p class="aviso-noscript">
+      Ative o JavaScript para ver o menu completo.
+      Em caso de perigo, ligue 190.
+    </p>
+  </noscript>
 
-  <h3>Seus direitos</h3>
-  <p>O Estatuto da Criança e do Adolescente (ECA) diz que nenhuma criança ou adolescente deve sofrer negligência, discriminação, exploração, violência, crueldade ou opressão.</p>
-  <p>Fonte: <a href="https://www.planalto.gov.br/ccivil_03/leis/l8069compilado.htm" target="_blank" rel="noopener">ECA (Lei 8.069/1990)</a></p>
+  <header id="topo"></header>
 
-  <h3>Onde buscar ajuda</h3>
-  <ul>
-    <li><strong>190 (Polícia):</strong> ligue se estiver em perigo agora.</li>
-    <li><strong>Disque 100:</strong> serviço do governo que recebe denúncias de violações de direitos de crianças e adolescentes. Funciona todos os dias, 24 horas, e é gratuito.</li>
-    <li><strong>Conselho Tutelar:</strong> órgão que cuida dos direitos de crianças e adolescentes. No Recife, há Conselhos Tutelares que atendem todas as regiões da cidade.</li>
-  </ul>
-  <p>Fonte: <a href="https://www.gov.br/mdh/pt-br/acesso-a-informacao/disque-100" target="_blank" rel="noopener">Governo Federal: Disque 100</a></p>
-  <p>Fonte: <a href="https://www2.recife.pe.gov.br/servico/conselho-tutelar?op=MTQx" target="_blank" rel="noopener">Prefeitura do Recife: Conselho Tutelar</a></p>
+  <main id="conteudo" class="pagina-menores">
+
+    <section class="menores-hero">
+      <div class="container menores-hero__interno">
+
+        <div class="menores-hero__texto">
+          <span class="menores-eyebrow">UM ESPAÇO PARA VOCÊ</span>
+          <h1>Meninas e adolescentes</h1>
+          <p>
+            Esta página é para meninas e adolescentes. Aqui você encontra
+            informação e caminhos de apoio. O VIVA informa e indica
+            canais oficiais.
+          </p>
+        </div>
+
+        <div class="menores-hero__arte" aria-hidden="true"></div>
+
+      </div>
+    </section>
+
+    <div class="container menores-conteudo">
+
+      <div class="menores-privacidade">
+        <svg class="icone" aria-hidden="true"><use href="#i-pin"></use></svg>
+        <p>
+          Esta página é só para informar. Ela não pede nome, endereço
+          nem nenhum dado seu, e você não precisa contar nada aqui.
+        </p>
+      </div>
+
+      <section class="menores-secao" aria-labelledby="titulo-culpa">
+        <h2 id="titulo-culpa">Você não tem culpa</h2>
+        <div class="menores-destaque">
+          <p>
+            Se alguém está te machucando, te ameaçando ou te fazendo mal,
+            a culpa não é sua. Você pode pedir ajuda a um adulto de confiança,
+            como alguém da família, da escola ou da sua comunidade.
+          </p>
+        </div>
+      </section>
+
+      <section class="menores-secao" aria-labelledby="titulo-direitos">
+        <h2 id="titulo-direitos">Seus direitos</h2>
+        <div class="menores-card">
+          <p>
+            O Estatuto da Criança e do Adolescente (ECA) diz que nenhuma
+            criança ou adolescente deve sofrer negligência, discriminação,
+            exploração, violência, crueldade ou opressão.
+          </p>
+        </div>
+        <p class="menores-fonte-unica">
+          Fonte:
+          <a href="https://www.planalto.gov.br/ccivil_03/leis/l8069compilado.htm" target="_blank" rel="noopener">ECA (Lei 8.069/1990)<span class="sr-only"> (abre em nova aba)</span></a>
+        </p>
+      </section>
+
+      <section class="menores-secao" aria-labelledby="titulo-ajuda">
+        <h2 id="titulo-ajuda">Onde buscar ajuda</h2>
+
+        <div class="menores-canais">
+
+          <div class="canal-card canal-card--urgente">
+            <h3>Em perigo agora · Polícia</h3>
+            <a class="canal-card__numero" href="tel:190" aria-label="Ligar para 190">190</a>
+            <p>Ligue se estiver em perigo agora.</p>
+          </div>
+
+          <div class="canal-card">
+            <h3>Disque 100</h3>
+            <a class="canal-card__numero" href="tel:100" aria-label="Ligar para 100">100</a>
+            <p>
+              Serviço do governo que recebe denúncias de violações de direitos
+              de crianças e adolescentes. Funciona todos os dias, 24 horas,
+              e é gratuito.
+            </p>
+          </div>
+
+          <div class="canal-card">
+            <h3>Conselho Tutelar</h3>
+            <p class="canal-card__titulo">Perto de você</p>
+            <p>
+              Órgão que cuida dos direitos de crianças e adolescentes.
+              No Recife, há Conselhos Tutelares que atendem todas as regiões
+              da cidade.
+            </p>
+            <a class="botao botao--primario" href="https://www2.recife.pe.gov.br/servico/conselho-tutelar?op=MTQx" target="_blank" rel="noopener">
+              <span>Ver na Prefeitura<span class="sr-only"> (abre em nova aba)</span></span>
+              <svg class="icone" aria-hidden="true"><use href="#i-seta"></use></svg>
+            </a>
+          </div>
+
+        </div>
+
+        <ul class="menores-fontes">
+          <li>
+            Fonte:
+            <a href="https://www.gov.br/mdh/pt-br/acesso-a-informacao/disque-100" target="_blank" rel="noopener">Governo Federal: Disque 100<span class="sr-only"> (abre em nova aba)</span></a>
+          </li>
+          <li>
+            Fonte:
+            <a href="https://www2.recife.pe.gov.br/servico/conselho-tutelar?op=MTQx" target="_blank" rel="noopener">Prefeitura do Recife: Conselho Tutelar<span class="sr-only"> (abre em nova aba)</span></a>
+          </li>
+        </ul>
+      </section>
+
+    </div>
   </main>
 
-  <footer>
-    <p>Projeto acadêmico — UNINASSAU Olinda, 2026.2.</p>
-  </footer>
+  <footer id="rodape"></footer>
+
 </body>
 </html>

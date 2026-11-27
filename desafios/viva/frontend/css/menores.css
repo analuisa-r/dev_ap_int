@@ -1,0 +1,277 @@
+/* VIVA — Página Meninas e adolescentes */
+
+.pagina-menores {
+  --menores-superficie: #FFFFFF;
+  --menores-sombra: 0 5px 24px rgba(75, 27, 85, 0.06);
+}
+
+/* Hero */
+
+.menores-hero {
+  background: var(--lilas);
+  overflow: hidden;
+}
+
+.menores-hero__interno {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  min-height: 17rem;
+  padding-block: 3rem;
+}
+
+.menores-hero__texto {
+  border-left: 5px solid var(--amarelo);
+  padding-left: 1.5rem;
+}
+
+.menores-eyebrow {
+  color: var(--primaria);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.menores-hero h1 {
+  margin: 0.5rem 0 1rem;
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  line-height: 1.15;
+  color: var(--titulo);
+  font-weight: 800;
+}
+
+.menores-hero p {
+  max-width: 38rem;
+  margin: 0;
+  color: var(--texto-suave);
+  font-size: 1.1rem;
+}
+
+.menores-hero__arte {
+  min-height: 12rem;
+  align-self: stretch;
+  background: url("../img/rodape-recife.png") center bottom / contain no-repeat;
+}
+
+/* Conteúdo */
+
+.menores-conteudo {
+  padding-block: 3rem 4rem;
+}
+
+.menores-secao {
+  margin-bottom: 3.5rem;
+}
+
+.menores-secao h2 {
+  margin: 0 0 0.75rem;
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: var(--titulo);
+}
+
+.menores-secao > p {
+  max-width: 48rem;
+  margin: 0 0 1.5rem;
+}
+
+/* Aviso de privacidade */
+
+.menores-privacidade {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--lilas-claro);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-md);
+}
+
+.menores-privacidade p {
+  margin: 0;
+  color: var(--texto);
+}
+
+/* Destaque "Você não tem culpa" */
+
+.menores-destaque {
+  max-width: 48rem;
+  padding: 1.75rem;
+  background: var(--lilas);
+  border-left: 5px solid var(--amarelo);
+  border-radius: var(--raio-lg);
+}
+
+.menores-destaque p {
+  margin: 0;
+  color: var(--texto);
+  font-size: 1.15rem;
+}
+
+/* Card de direitos */
+
+.menores-card {
+  max-width: 48rem;
+  padding: 1.75rem;
+  border: 1px solid var(--borda);
+  border-top: 5px solid var(--primaria);
+  border-radius: var(--raio-lg);
+  background: var(--menores-superficie);
+  box-shadow: var(--menores-sombra);
+}
+
+.menores-card p {
+  margin: 0;
+  color: var(--texto);
+}
+
+/* Canais de ajuda */
+
+.menores-canais {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.canal-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.75rem;
+  border: 1px solid var(--borda);
+  border-top: 5px solid var(--primaria);
+  border-radius: var(--raio-lg);
+  background: var(--menores-superficie);
+  box-shadow: var(--menores-sombra);
+  overflow-wrap: anywhere;
+}
+
+.canal-card--urgente {
+  border-top-color: var(--vinho);
+}
+
+.canal-card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--texto-suave);
+}
+
+.canal-card__numero {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-family: var(--fonte-titulo);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--titulo);
+  text-decoration: none;
+}
+
+.canal-card__numero:hover {
+  text-decoration: underline;
+}
+
+.canal-card__titulo {
+  margin: 0 0 0.5rem;
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--titulo);
+}
+
+.canal-card p {
+  margin: 0 0 1rem;
+  color: var(--texto);
+}
+
+.canal-card .botao {
+  margin-top: auto;
+}
+
+/* Fonte oficial */
+
+.menores-fontes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.menores-fontes li + li {
+  margin-top: 0.4rem;
+}
+
+.menores-fontes a {
+  font-weight: 700;
+  color: var(--titulo);
+}
+
+.menores-fonte-unica {
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.menores-fonte-unica a {
+  font-weight: 700;
+  color: var(--titulo);
+}
+
+/* Responsividade */
+
+@media (max-width: 65rem) {
+  .menores-canais {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 42rem) {
+  .menores-canais,
+  .menores-hero__interno {
+    grid-template-columns: 1fr;
+  }
+
+  .menores-hero__arte {
+    display: none;
+  }
+
+  .menores-hero__interno {
+    min-height: auto;
+    padding-block: 2rem;
+  }
+
+  .menores-hero__texto {
+    padding-left: 1rem;
+  }
+
+  .menores-conteudo {
+    padding-block: 2rem;
+  }
+}
+
+/* Alto contraste */
+
+html.alto-contraste .pagina-menores {
+  --menores-superficie: #000;
+  --menores-sombra: none;
+}
+
+html.alto-contraste .menores-eyebrow {
+  color: var(--amarelo);
+}
+
+html.alto-contraste .menores-hero__arte {
+  display: none;
+}
+
+html.alto-contraste .canal-card,
+html.alto-contraste .menores-card {
+  border-top-color: var(--amarelo);
+}
