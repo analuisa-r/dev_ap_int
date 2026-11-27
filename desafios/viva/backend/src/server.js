@@ -1,6 +1,8 @@
 // VIVA — servidor (Express)
 const path = require("node:path");
 const express = require("express");
+const helmet = require("helmet");
+const { rateLimit } = require("express-rate-limit");
 const rotasRegistros = require("./routes/registros");
 const rotasServicos = require("./routes/servicos");
 
@@ -9,6 +11,26 @@ const PORTA = process.env.PORT || 3000;
 const PASTA_FRONTEND = path.join(__dirname, "..", "..", "frontend");
 
 app.disable("x-powered-by");
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        fontSrc: ["'self'"],
+        imgSrc: ["'self'", "data:"],
+        connectSrc: ["'self'", "https://viacep.com.br"],
+        objectSrc: ["'none'"],
+        frameAncestors: ["'none'"],
+        upgradeInsecureRequests: null
+      }
+    },
+    referrerPolicy: {
+      policy: "no-referrer"
+    }
+  })
+);
 app.use(express.json({ limit: "10kb" }));
 
 // Respostas da API nunca ficam guardadas no cache do navegador
@@ -21,9 +43,31 @@ app.get("/api/saude", (req, res) => {
   res.json({ status: "ok", projeto: "VIVA", hora: new Date().toISOString() });
 });
 
-app.use("/api/registros", rotasRegistros);
-app.use("/api/servicos", rotasServicos);
+// Limita requisições excessivas nas rotas de registros
+const limiteRegistros = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 60,
+  standardHeaders: "draft-8",
+  legacyHeaders: false,
+  message: {
+    erro: "Muitas solicitações. Tente novamente em alguns minutos."
+  }
+});
 
+// Limita a criação excessiva de registros
+const limiteCriacao = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 10,
+  standardHeaders: "draft-8",
+  legacyHeaders: false,
+  message: {
+    erro: "Limite de registros atingido. Tente novamente mais tarde."
+  }
+});
+
+app.post("/api/registros", limiteCriacao);
+app.use("/api/registros", limiteRegistros, rotasRegistros);
+app.use("/api/servicos", rotasServicos);
 app.use(express.static(PASTA_FRONTEND));
 
 // Qualquer rota de API que não exista
