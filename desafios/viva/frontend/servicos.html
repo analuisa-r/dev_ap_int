@@ -1,35 +1,210 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serviços de apoio — VIVA</title>
-    <link rel="stylesheet" href="css/base.css">
-      <script src="js/saida-rapida.js" defer></script>
-</head>
-<body>
-  <header>
-    <h1>VIVA — Cidade que Protege</h1>
-    <p><strong>Em emergência:</strong> 190 (Polícia) · 180 (Central de Atendimento à Mulher)</p>
-    <nav aria-label="Menu principal">
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="servicos.html" aria-current="page">Serviços de apoio</a></li>
-        <li><a href="orientacoes.html">Orientações</a></li>
-        <li><a href="menores.html">Meninas e adolescentes</a></li>
-        <li><a href="registrar.html">Registrar um problema</a></li>
-        <li><a href="acompanhar.html">Acompanhar</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <h2>Serviços de apoio</h2>
-    <p>Em construção: aqui ficará a lista de delegacias e instituições de apoio em Recife, com fontes oficiais.</p>
+  <meta name="description" content="Conheça a rede de serviços de proteção, acolhimento e orientação para mulheres, meninas e adolescentes.">
+
+  <title>Serviços de apoio — VIVA</title>
+
+  <link rel="stylesheet" href="css/viva.css">
+  <link rel="stylesheet" href="css/servicos.css">
+
+  <script src="js/layout.js" defer></script>
+  <script src="js/servicos.js" defer></script>
+</head>
+
+<body>
+
+  <a class="pular-conteudo" href="#conteudo">
+    Pular para o conteúdo
+  </a>
+
+  <noscript>
+    <p class="aviso-noscript">
+      Ative o JavaScript para consultar os serviços.
+      Em caso de emergência, ligue 190.
+    </p>
+  </noscript>
+
+  <header id="topo"></header>
+
+  <main id="conteudo" class="pagina-servicos">
+
+    <section class="servicos-hero">
+      <div class="container servicos-hero__interno">
+
+        <div class="servicos-hero__texto">
+          <span class="servicos-eyebrow">
+            REDE DE PROTEÇÃO
+          </span>
+
+          <h1>Você não está sozinha.</h1>
+
+          <p>
+            Encontre serviços de acolhimento, proteção,
+            orientação e assistência para mulheres,
+            meninas e adolescentes.
+          </p>
+        </div>
+
+        <div class="servicos-hero__arte"
+             aria-hidden="true">
+        </div>
+
+      </div>
+    </section>
+
+    <section class="container servicos-conteudo"
+             aria-labelledby="titulo-rede">
+
+      <div class="servicos-introducao">
+        <h2 id="titulo-rede">Encontre apoio</h2>
+        <p>
+          Consulte a rede de atendimento do Recife,
+          de Pernambuco e os canais nacionais.
+        </p>
+      </div>
+
+      <div class="servicos-pesquisa">
+
+        <label for="busca-servicos">
+          O que você procura?
+        </label>
+
+        <div class="servicos-campo">
+          <svg class="icone" viewBox="0 0 24 24"
+               aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m16 16 5 5"></path>
+          </svg>
+
+          <input
+            type="search"
+            id="busca-servicos"
+            placeholder="Busque por nome, bairro ou atendimento"
+            autocomplete="off"
+          >
+        </div>
+
+        <div class="servicos-filtros"
+             role="group"
+             aria-label="Filtrar por categoria">
+
+          <button type="button"
+                  class="servicos-filtro"
+                  data-categoria="todos"
+                  aria-pressed="true">
+            Todos
+          </button>
+
+          <button type="button"
+                  class="servicos-filtro"
+                  data-categoria="policial"
+                  aria-pressed="false">
+            Atendimento policial
+          </button>
+
+          <button type="button"
+                  class="servicos-filtro"
+                  data-categoria="psicossocial"
+                  aria-pressed="false">
+            Apoio psicológico e social
+          </button>
+
+          <button type="button"
+                  class="servicos-filtro"
+                  data-categoria="acolhimento"
+                  aria-pressed="false">
+            Orientação e acolhimento
+          </button>
+
+          <button type="button"
+                  class="servicos-filtro"
+                  data-categoria="juridico"
+                  aria-pressed="false">
+            Assistência jurídica
+          </button>
+
+          <button type="button"
+                  class="servicos-filtro"
+                  data-categoria="infantojuvenil"
+                  aria-pressed="false">
+            Crianças e adolescentes
+          </button>
+
+        </div>
+      </div>
+
+      <div class="servicos-resultados">
+
+        <p id="contador-servicos"
+           role="status"
+           aria-live="polite">
+          Carregando serviços...
+        </p>
+
+        <button type="button"
+                id="limpar-filtros"
+                class="servicos-limpar">
+          Limpar filtros
+        </button>
+
+      </div>
+
+      <div id="lista-servicos"
+           class="servicos-grid"
+           aria-busy="true">
+      </div>
+
+      <div id="estado-servicos"
+           class="servicos-estado"
+           hidden>
+
+        <p id="mensagem-servicos"></p>
+
+        <button type="button"
+                id="tentar-novamente"
+                class="botao botao--primario"
+                hidden>
+          Tentar novamente
+        </button>
+
+      </div>
+
+      <aside class="servicos-aviso">
+
+        <svg class="icone" aria-hidden="true">
+          <use href="#i-telefone"></use>
+        </svg>
+
+        <div>
+          <h2>Precisa de ajuda imediata?</h2>
+
+          <p>
+            Em situação de risco imediato, ligue
+            <a href="tel:190">190</a>.
+            Para orientação e informações sobre violência
+            contra a mulher, ligue
+            <a href="tel:180">180</a>.
+          </p>
+
+          <p>
+            O VIVA é um projeto acadêmico e não realiza
+            atendimento emergencial. Confirme endereços,
+            contatos e horários nas fontes oficiais.
+          </p>
+        </div>
+
+      </aside>
+
+    </section>
+
   </main>
 
-  <footer>
-    <p>Projeto acadêmico — UNINASSAU Olinda, 2026.2.</p>
-  </footer>
+  <footer id="rodape"></footer>
+
 </body>
 </html>
