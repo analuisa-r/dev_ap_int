@@ -65,7 +65,7 @@
   bottom: 0;
   width: min(60%, 65rem);
 
-  background: url("../img/menores-hero.png")
+  background: url("../img/menores-hero.webp")
               right center / cover no-repeat;
 
   mix-blend-mode: multiply;

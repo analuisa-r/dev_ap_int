@@ -73,7 +73,7 @@
   bottom: 0;
   width: min(60%, 65rem);
 
-  background: url("../img/acompanhar-hero.png")
+  background: url("../img/acompanhar-hero.webp")
               right bottom / cover no-repeat;
 
   mix-blend-mode: multiply;

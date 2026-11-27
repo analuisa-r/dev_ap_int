@@ -66,7 +66,7 @@
   bottom: 0;
   width: min(60%, 65rem);
 
-  background: url("../img/servicos-hero.png")
+  background: url("../img/servicos-hero.webp")
               right bottom / cover no-repeat;
 
   mix-blend-mode: multiply;
