@@ -5,23 +5,32 @@
   --orientacoes-sombra: 0 5px 24px rgba(75, 27, 85, 0.06);
 }
 
+
 /* Hero */
 
 .orientacoes-hero {
-  background: var(--lilas);
+  position: relative;
   overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    var(--fundo) 0%,
+    #F6EDED 40%,
+    #EFE5F6 100%
+  );
 }
 
 .orientacoes-hero__interno {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
   gap: 2rem;
-  min-height: 17rem;
+  min-height: 23rem;
   padding-block: 3rem;
 }
 
 .orientacoes-hero__texto {
+  position: relative;
+  z-index: 2;
   border-left: 5px solid var(--amarelo);
   padding-left: 1.5rem;
 }
@@ -50,10 +59,27 @@
 }
 
 .orientacoes-hero__arte {
-  min-height: 12rem;
-  align-self: stretch;
-  background: url("../img/rodape-recife.png") center bottom / contain no-repeat;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(60%, 65rem);
+
+  background: url("../img/orientacoes-hero.png")
+              right center / cover no-repeat;
+
+  mix-blend-mode: multiply;
+  pointer-events: none;
+
+  -webkit-mask-image: linear-gradient(
+    90deg, transparent 0%, #000 35%, #000 100%
+  );
+
+  mask-image: linear-gradient(
+    90deg, transparent 0%, #000 35%, #000 100%
+  );
 }
+
 
 /* Seções */
 
@@ -270,4 +296,41 @@ html.alto-contraste .orientacoes-hero__arte {
 html.alto-contraste .orientacao-card,
 html.alto-contraste .canal-card {
   border-top-color: var(--amarelo);
+}
+
+/* Refinamento responsivo do hero */
+
+@media (max-width: 56rem) {
+  .orientacoes-hero__interno {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    min-height: auto;
+    padding-block: 2rem 0;
+  }
+
+  .orientacoes-hero__arte {
+    display: block;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 2 / 1;
+    background-position: center;
+
+    -webkit-mask-image: linear-gradient(
+      180deg, transparent 0%, #000 20%
+    );
+
+    mask-image: linear-gradient(
+      180deg, transparent 0%, #000 20%
+    );
+  }
+}
+
+html.alto-contraste .orientacoes-hero {
+  background: #000;
+}
+
+html.alto-contraste .orientacoes-hero__arte {
+  display: none;
 }
