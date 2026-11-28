@@ -7,6 +7,13 @@ const rotasRegistros = require("./routes/registros");
 const rotasServicos = require("./routes/servicos");
 
 const app = express();
+
+// Atrás do proxy da hospedagem, o IP real chega no cabeçalho X-Forwarded-For.
+// Defina TRUST_PROXY=1 apenas na hospedagem, nunca no computador local.
+const saltosDeProxy = Number.parseInt(process.env.TRUST_PROXY, 10);
+if (Number.isInteger(saltosDeProxy) && saltosDeProxy > 0) {
+  app.set("trust proxy", saltosDeProxy);
+}
 const PORTA = process.env.PORT || 3000;
 const PASTA_FRONTEND = path.join(__dirname, "..", "..", "frontend");
 
@@ -46,7 +53,7 @@ app.get("/api/saude", (req, res) => {
 // Limita requisições excessivas nas rotas de registros
 const limiteRegistros = rateLimit({
   windowMs: 15 * 60 * 1000,
-  limit: 60,
+    limit: Number(process.env.LIMITE_REGISTROS) || 60,
   standardHeaders: "draft-8",
   legacyHeaders: false,
   message: {
@@ -57,7 +64,7 @@ const limiteRegistros = rateLimit({
 // Limita a criação excessiva de registros
 const limiteCriacao = rateLimit({
   windowMs: 15 * 60 * 1000,
-  limit: 10,
+    limit: Number(process.env.LIMITE_CRIACAO) || 10,
   standardHeaders: "draft-8",
   legacyHeaders: false,
   message: {
